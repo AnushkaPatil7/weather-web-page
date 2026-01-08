@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WeatherWise - Advanced Weather Forecast</title>
+<link rel="stylesheet" href="weather.css">
+</head>
+<body>
+<div class="container">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">WeatherWise</div>
+    <div class="status-card">
+      <h3>Status</h3>
+      <div class="status-metric">
+        <span class="arrow">↑</span>
+        <span id="statusPercent">0%</span>
+      </div>
+      <div class="status-chart" id="statusChart">
+        <canvas id="miniChart"></canvas>
+      </div>
+      <!-- See Details button removed -->
+    </div>
+    <div class="location-selector">
+      <h3>Select Area</h3>
+      <div class="globe" id="globe"></div>
+      <div class="current-location" id="sidebarLocation">Loading...</div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <header>
+      <div class="location-info">
+        <span class="location-icon">📍</span>
+        <span id="headerLocation">Loading...</span>
+      </div>
+      <div class="header-actions">
+        <button class="search-btn" onclick="toggleSearch()">🔍</button>
+        <button class="download-btn">Download App</button>
+      </div>
+    </header>
+
+    <div class="search-container" id="searchContainer">
+      <input type="text" id="searchInput" placeholder="Enter city name..." />
+      <button onclick="searchLocation()">Search</button>
+    </div>
+
+    <div class="current-weather">
+      <div class="weather-top">
+        <div class="temperature-display">
+          <div class="temp-main" id="mainTemp">--°</div>
+          <div class="temp-range">
+            <div class="temp-item">
+              <span class="label">H</span>
+              <span id="highTemp">--°</span>
+            </div>
+            <div class="temp-item">
+              <span class="label">L</span>
+              <span id="lowTemp">--°</span>
+            </div>
+          </div>
+        </div>
+        <div class="weather-image">
+          <img id="weatherImg" src="" alt="Weather Icon" />
+        </div>
+      </div>
+      <div class="weather-description">
+        <h1 id="weatherCondition">Loading...</h1>
+        <p id="weatherDetail">Fetching weather data...</p>
+      </div>
+      <div class="tagline">
+        With real time data and advanced technology,<br>
+        we provide reliable forecasts for any location<br>
+        around the world.
+      </div>
+    </div>
+
+    <div class="features-grid">
+      <div class="detail-card">
+        <div class="detail-icon">💨</div>
+        <div class="detail-label">Wind Speed</div>
+        <div class="detail-value" id="windSpeed">-- km/h</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-icon">💧</div>
+        <div class="detail-label">Humidity</div>
+        <div class="detail-value" id="humidity">--%</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-icon">🌡️</div>
+        <div class="detail-label">Feels Like</div>
+        <div class="detail-value" id="feelsLike">--°</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-icon">👁️</div>
+        <div class="detail-label">Visibility</div>
+        <div class="detail-value" id="visibility">-- km</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-icon">🌅</div>
+        <div class="detail-label">UV Index</div>
+        <div class="detail-value" id="uvIndex">--</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-icon">🧭</div>
+        <div class="detail-label">Pressure</div>
+        <div class="detail-value" id="pressure">-- hPa</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-icon">🌧️</div>
+        <div class="detail-label">Precipitation</div>
+        <div class="detail-value" id="precipitation">-- mm</div>
+      </div>
+    </div>
+
+    <div class="forecast-section">
+      <h2 class="section-title">7-10 Days Forecast</h2>
+      <div class="forecast-days" id="forecastDays"></div>
+      <div class="forecast-chart">
+        <canvas id="forecastChart"></canvas>
+      </div>
+    </div>
+
+    <div class="hourly-section">
+      <h2 class="section-title">Hourly Forecast</h2>
+      <div class="forecast-chart">
+        <canvas id="hourlyChart"></canvas>
+      </div>
+    </div>
+
+    <div class="recent-section">
+      <div class="section-header">
+        <span>Recently Searched</span>
+        <button onclick="clearRecent()">See All →</button>
+      </div>
+      <div class="recent-cards" id="recentCards"></div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="weather.js"></script>
+</body>
+</html>
